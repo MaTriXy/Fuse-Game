@@ -1,10 +1,8 @@
-package com.elkriefy.games.belote
+package com.elkriefy.games.belote.activities
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
-
-import kotlinx.android.synthetic.main.activity_main.*
+import com.elkriefy.games.belote.R
 
 class MainActivity : AppCompatActivity() {
 
