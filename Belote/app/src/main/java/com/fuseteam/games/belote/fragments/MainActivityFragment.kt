@@ -25,13 +25,14 @@ import com.google.firebase.database.FirebaseDatabase
 class MainActivityFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener {
 
     val RC_SIGN_IN: Int = 78
-    lateinit var loginWithGoogleButton: View
+    lateinit var loginWithGoogleButton: Button
     lateinit var joinToQue: Button
     var mGoogleApiClient: GoogleApiClient? = null
     var currentUserInQue = false
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -40,30 +41,28 @@ class MainActivityFragment : Fragment(), GoogleApiClient.OnConnectionFailedListe
         mGoogleApiClient = GoogleApiClient.Builder(context)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build()
+    }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loginWithGoogleButton = view!!.findViewById<View>(R.id.login_with_google)
-        joinToQue = view!!.findViewById<Button>(R.id.join_to_que)
+        loginWithGoogleButton = view!!.findViewById<Button>(R.id.login_with_google)
+        joinToQue = view.findViewById<Button>(R.id.join_to_que)
         var currentUser = FirebaseAuth.getInstance().currentUser
         if (currentUser != null) {
             loginWithGoogleButton.visibility = View.GONE
+            joinToQue.visibility = View.VISIBLE
             Toast.makeText(context, "hello" + currentUser.displayName, Toast.LENGTH_SHORT).show()
-
         } else {
             loginWithGoogleButton.setOnClickListener {
                 signIn()
             }
         }
 
-        if (currentUser != null) {
-            joinToQue!!.visibility = View.VISIBLE
-        }
-
-
-        joinToQue!!.setOnClickListener {
+        joinToQue.setOnClickListener {
             if (!currentUserInQue) {
                 val database = FirebaseDatabase.getInstance()
                 var player = Player()
@@ -72,12 +71,12 @@ class MainActivityFragment : Fragment(), GoogleApiClient.OnConnectionFailedListe
                 player.email = currentUser1!!.email
                 database.getReference(Player.TABLE + "/" + currentUser1.uid).setValue(player)
                 currentUserInQue = true
-                joinToQue!!.text = "leave que"
+                joinToQue.text = "leave que"
             } else {
                 val database = FirebaseDatabase.getInstance()
                 database.getReference(Player.TABLE + "/" + FirebaseAuth.getInstance().currentUser!!.uid).removeValue()
                 currentUserInQue = false
-                joinToQue!!.text = "Joint to Que"
+                joinToQue.text = "Joint to Que"
             }
         }
 
@@ -125,18 +124,5 @@ class MainActivityFragment : Fragment(), GoogleApiClient.OnConnectionFailedListe
     }
 
     override fun onConnectionFailed(p0: ConnectionResult) {
-    }
-
-
-    override fun onStart() {
-        super.onStart()
-        if (mGoogleApiClient != null)
-            mGoogleApiClient?.connect()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        mGoogleApiClient?.stopAutoManage(activity)
-        mGoogleApiClient?.disconnect()
     }
 }
