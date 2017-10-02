@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import com.fuseteam.games.belote.R
+import com.fuseteam.games.belote.data.types.Game
 import com.fuseteam.games.belote.data.types.Player
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -17,7 +18,7 @@ import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 
 /**
  * A placeholder fragment containing a simple view.
@@ -30,6 +31,7 @@ class MainActivityFragment : Fragment(), GoogleApiClient.OnConnectionFailedListe
     var mGoogleApiClient: GoogleApiClient? = null
     var currentUserInQue = false
 
+    lateinit var playesQueReference: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +44,7 @@ class MainActivityFragment : Fragment(), GoogleApiClient.OnConnectionFailedListe
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build()
     }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_main, container, false)
@@ -80,6 +83,44 @@ class MainActivityFragment : Fragment(), GoogleApiClient.OnConnectionFailedListe
             }
         }
 
+        playesQueReference = FirebaseDatabase.getInstance().getReference(Player.TABLE)
+        playesQueReference.addValueEventListener(valueChangeListener)
+
+    }
+
+    var valueChangeListener = object : ValueEventListener {
+        override fun onCancelled(p0: DatabaseError?) {
+
+        }
+
+        override fun onDataChange(p0: DataSnapshot?) {
+            val firstFour = ArrayList<Player>()
+            for (child in p0!!.children) {
+                val player = child.getValue(Player::class.java)
+                firstFour.add(player!!)
+                if (firstFour.size == 2) {
+                    var player1 = firstFour[0]
+                    var game = Game()
+//                    game.groupA = ArrayList<Player>(firstFour.subList(0, 2))
+//                    game.groupB = ArrayList<Player>(firstFour.subList(2, 4))
+
+
+                    game.groupA!!.add(firstFour[0])
+                    game.groupB!!.add(firstFour[1])
+
+                    playesQueReference.removeEventListener(this)
+
+                    FirebaseDatabase.getInstance().getReference(Game.TABLE).push().setValue(game)
+
+
+                    for (player in firstFour) {
+                        player.playing = true
+                        FirebaseDatabase.getInstance().getReference(Player.TABLE + "/" + player.id).setValue(player)
+                    }
+                    break
+                }
+            }
+        }
     }
 
     private fun signIn() {
