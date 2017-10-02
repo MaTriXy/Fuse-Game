@@ -23,10 +23,10 @@ class GameFragment : Fragment() {
 
         cardSet.shuffle()
 
-        while (true) {
-            val card: CardData? = cardSet.suggestTrump()
-            Log.e("GameFragment", card?.toString() ?: break)
-        }
+//        while (true) {
+//            val card: CardData? = cardSet.suggestTrump()
+//            Log.e("GameFragment", card?.toString() ?: break)
+//        }
 
         return v
     }
