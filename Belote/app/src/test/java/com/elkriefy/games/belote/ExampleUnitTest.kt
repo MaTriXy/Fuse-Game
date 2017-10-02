@@ -1,4 +1,4 @@
-package com.elkriefy.games.belote
+package com.fuseteam.games.belote
 
 import org.junit.Test
 
