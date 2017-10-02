@@ -34,10 +34,18 @@ class MainActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedList
                 .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build()
+        var loginWithGoogleButton = findViewById<View>(R.id.login_with_google)
+        var currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser != null) {
+            loginWithGoogleButton.visibility = View.GONE
+            Toast.makeText(this@MainActivity, "hello" + currentUser.displayName, Toast.LENGTH_SHORT).show()
 
-        findViewById<View>(R.id.login_with_google).setOnClickListener {
-            signIn()
+        } else {
+            loginWithGoogleButton.setOnClickListener {
+                signIn()
+            }
         }
+
     }
 
     override fun onConnectionFailed(p0: ConnectionResult) {
