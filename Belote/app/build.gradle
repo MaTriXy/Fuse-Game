@@ -8,7 +8,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
     defaultConfig {
-        applicationId "com.elkriefy.games.belote"
+        applicationId "com.fuseteam.games.belote"
         minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
