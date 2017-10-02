@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1078935151609",
+    "firebase_url": "https://belote-b05a7.firebaseio.com",
+    "project_id": "belote-b05a7",
+    "storage_bucket": "belote-b05a7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078935151609:android:a244c9939526aa0e",
+        "android_client_info": {
+          "package_name": "com.fuseteam.games.belote"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078935151609-r8pv0n56he50jdvpkt1tj7q2int3vu1e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fuseteam.games.belote",
+            "certificate_hash": "1ea75976e26ec27e332a3edfe7acb790ec704142"
+          }
+        },
+        {
+          "client_id": "1078935151609-ce5fqrcmhb8614l4ib6ovqa5bsvm67r0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5pAhB6FP3fI_asnkinAu3A0xsV_lR4G0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1078935151609-ce5fqrcmhb8614l4ib6ovqa5bsvm67r0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
