@@ -4,7 +4,6 @@ import android.animation.Animator
 import android.os.Bundle
 import android.support.annotation.IdRes
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,18 +13,22 @@ import com.fuseteam.games.belote.model.CardData
 import com.fuseteam.games.belote.ui.CardView
 import android.animation.ValueAnimator
 import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
-import android.support.v4.view.ViewCompat.setTranslationY
-import android.opengl.ETC1.getHeight
-import android.opengl.ETC1.getWidth
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
-import android.view.ViewTreeObserver
+import com.fuseteam.games.belote.model.Player
+import com.google.android.gms.tasks.Tasks
+import java.util.*
+import android.view.View.DragShadowBuilder
+import android.content.ClipData
+import android.view.MotionEvent
+import android.view.View.OnTouchListener
 
 
 /**
  * A placeholder fragment containing a simple view.
  */
 class GameFragment : Fragment() {
+
+    private var showAllCards: Boolean = true
 
     private var screenWidth: Int = 0
     private var screenHeight: Int = 0
@@ -34,6 +37,8 @@ class GameFragment : Fragment() {
     private val opponentLeftCardViewList: ArrayList<CardView> = arrayListOf()
     private val opponentRightCardViewList: ArrayList<CardView> = arrayListOf()
     private val opponentTopCardViewList: ArrayList<CardView> = arrayListOf()
+    private lateinit var trumpCardView: CardView
+    private lateinit var trumpCardData: CardData
 
     private val cardSet: CardSet = CardSet()
 
@@ -87,6 +92,9 @@ class GameFragment : Fragment() {
         opponentTopCardViewList.add(findView(v, R.id.opponentTopCard8))
         hideCards(opponentTopCardViewList)
 
+        trumpCardView = findView(v, R.id.trampCard)
+        trumpCardView.visibility = View.GONE
+
         cardSet.shuffle()
 
         /* Fragment was initialized and has a size, start game */
@@ -100,6 +108,9 @@ class GameFragment : Fragment() {
 
                     firstDivide()
                     secondDivide()
+                    pickTrump()
+                    thirdDivide(Player.BOTTOM)
+                    trumpCardView.visibility = View.GONE
                 }
             })
         }
@@ -107,110 +118,133 @@ class GameFragment : Fragment() {
         return v
     }
 
-    private fun firstDivide() {
-        var cardView: CardView
-        var cardData: CardData
-
-        /* Player */
-        var playerList: List<CardData> = cardSet.pop3()
-        for (i in 0 until playerList.size) {
-            cardData = playerList.get(i)
-
-            cardView = playerCardViewList.get(i)
-            cardView.setCardData(null)
-            cardView.visibility = View.VISIBLE
-
-            animateCardDivide(cardView, cardData, true)
-        }
-
-        /* Opponent Left */
-        var opponentLeft: List<CardData> = cardSet.pop3()
-        for (i in 0 until opponentLeft.size) {
-            cardData = opponentLeft.get(i)
-
-            cardView = opponentLeftCardViewList.get(i)
-            cardView.setCardData(null)
-            cardView.visibility = View.VISIBLE
-
-            animateCardDivide(cardView, cardData, false)
-        }
-
-        /* Opponent Top */
-        var opponentTop: List<CardData> = cardSet.pop3()
-        for (i in 0 until opponentTop.size) {
-            cardData = opponentTop.get(i)
-
-            cardView = opponentTopCardViewList.get(i)
-            cardView.setCardData(null)
-            cardView.visibility = View.VISIBLE
-
-            animateCardDivide(cardView, cardData, false)
-        }
-
-        /* Opponent Right */
-        var opponentRight: List<CardData> = cardSet.pop3()
-        for (i in 0 until opponentRight.size) {
-            cardData = opponentRight.get(i)
-
-            cardView = opponentRightCardViewList.get(i)
-            cardView.setCardData(null)
-            cardView.visibility = View.VISIBLE
-
-            animateCardDivide(cardView, cardData, false)
+    /**
+     * This defines your touch listener
+     */
+    private inner class MyTouchListener : OnTouchListener {
+        override fun onTouch(view: View, motionEvent: MotionEvent): Boolean {
+            if (motionEvent.action == MotionEvent.ACTION_DOWN) {
+                val data = ClipData.newPlainText("", "")
+                val shadowBuilder = View.DragShadowBuilder(
+                        view)
+                view.startDrag(data, shadowBuilder, view, 0)
+                view.visibility = View.INVISIBLE
+                return true
+            } else {
+                return false
+            }
         }
     }
 
+    private fun firstDivide() {
+        val cardDelt = 0;
+
+        /* Player */
+        insert3CardData(cardDelt, true, playerCardViewList)
+
+        /* Opponent Left */
+        insert3CardData(cardDelt, showAllCards, opponentLeftCardViewList)
+
+        /* Opponent Top */
+        insert3CardData(cardDelt, showAllCards, opponentTopCardViewList)
+
+        /* Opponent Right */
+        insert3CardData(cardDelt, showAllCards, opponentRightCardViewList)
+    }
+
     private fun secondDivide() {
-        var cardView: CardView
-        var cardData: CardData
         val cardDelt = 3;
 
         /* Player */
-        var playerList: List<CardData> = cardSet.pop2()
-        for (i in 0 until playerList.size) {
-            cardData = playerList.get(i)
-
-            cardView = playerCardViewList.get(i + cardDelt)
-            cardView.setCardData(null)
-            cardView.visibility = View.VISIBLE
-
-            animateCardDivide(cardView, cardData, true)
-        }
+        insert2CardData(cardDelt, true, playerCardViewList)
 
         /* Opponent Left */
-        var opponentLeft: List<CardData> = cardSet.pop2()
-        for (i in 0 until opponentLeft.size) {
-            cardData = opponentLeft.get(i)
-
-            cardView = opponentLeftCardViewList.get(i + cardDelt)
-            cardView.setCardData(null)
-            cardView.visibility = View.VISIBLE
-
-            animateCardDivide(cardView, cardData, false)
-        }
+        insert2CardData(cardDelt, showAllCards, opponentLeftCardViewList)
 
         /* Opponent Top */
-        var opponentTop: List<CardData> = cardSet.pop2()
-        for (i in 0 until opponentTop.size) {
-            cardData = opponentTop.get(i)
-
-            cardView = opponentTopCardViewList.get(i + cardDelt)
-            cardView.setCardData(null)
-            cardView.visibility = View.VISIBLE
-
-            animateCardDivide(cardView, cardData, false)
-        }
+        insert2CardData(cardDelt, showAllCards, opponentTopCardViewList)
 
         /* Opponent Right */
-        var opponentRight: List<CardData> = cardSet.pop2()
-        for (i in 0 until opponentRight.size) {
-            cardData = opponentRight.get(i)
+        insert2CardData(cardDelt, showAllCards, opponentRightCardViewList)
+    }
 
-            cardView = opponentRightCardViewList.get(i + cardDelt)
+    private fun pickTrump() {
+        trumpCardData = cardSet.suggestTrump() ?: return
+        trumpCardView.visibility = View.VISIBLE
+        trumpCardView.setCardData(trumpCardData)
+        trumpCardView.show()
+    }
+
+    private fun thirdDivide(trumpChooser: Player) {
+        val cardDelt = 5
+
+        /* Player */
+        insertCardData(trumpChooser, Player.BOTTOM, cardDelt, true, playerCardViewList)
+
+        /* Opponent Left */
+        insertCardData(trumpChooser, Player.LEFT, cardDelt, showAllCards, opponentLeftCardViewList)
+
+        /* Opponent Top */
+        insertCardData(trumpChooser, Player.TOP, cardDelt, showAllCards, opponentTopCardViewList)
+
+        /* Opponent Right */
+        insertCardData(trumpChooser, Player.RIGHT, cardDelt, showAllCards, opponentRightCardViewList)
+    }
+
+    private fun insert2CardData(cardDelt: Int, show: Boolean, cardViews: ArrayList<CardView>) {
+        var list: List<CardData> = cardSet.pop2()
+
+        var cardView: CardView
+        var cardData: CardData
+
+        for (i in 0 until list.size) {
+            cardData = list[i]
+
+            cardView = cardViews.get(i + cardDelt)
             cardView.setCardData(null)
             cardView.visibility = View.VISIBLE
 
-            animateCardDivide(cardView, cardData, false)
+            animateCardDivide(cardView, cardData, show)
+        }
+    }
+
+    private fun insert3CardData(cardDelt: Int, show: Boolean, cardViews: ArrayList<CardView>) {
+        var list: List<CardData> = cardSet.pop3()
+
+        var cardView: CardView
+        var cardData: CardData
+
+        for (i in 0 until list.size) {
+            cardData = list[i]
+
+            cardView = cardViews.get(i + cardDelt)
+            cardView.setCardData(null)
+            cardView.visibility = View.VISIBLE
+
+            animateCardDivide(cardView, cardData, show)
+        }
+    }
+
+    private fun insertCardData(trumpChooser: Player, player: Player, cardDelt: Int, show: Boolean, cardViews: ArrayList<CardView>) {
+        var list: ArrayList<CardData>
+        if (trumpChooser == player) {
+            list = cardSet.pop2()
+            list.add(trumpCardData)
+        } else {
+            list = cardSet.pop3()
+        }
+
+        var cardView: CardView
+        var cardData: CardData
+
+        for (i in 0 until list.size) {
+            cardData = list[i]
+
+            cardView = cardViews.get(i + cardDelt)
+            cardView.setCardData(null)
+            cardView.visibility = View.VISIBLE
+
+            animateCardDivide(cardView, cardData, show)
         }
     }
 

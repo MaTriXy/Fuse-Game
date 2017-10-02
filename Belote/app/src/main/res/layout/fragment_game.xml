@@ -4,8 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MainActivityFragment"
-    tools:showIn="@layout/activity_main">
+    tools:background="@drawable/bg_table_green"
+    tools:context=".fragments.MainActivityFragment">
+
+    <View
+        android:id="@+id/dropbox_bottom"
+        android:layout_width="65dp"
+        android:layout_height="85dp"
+        android:background="@drawable/ic_card_dropbox"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.7"
+        tools:visibility="visible" />
+
+    <View
+        android:id="@+id/dropbox_left"
+        android:layout_width="65dp"
+        android:layout_height="85dp"
+        android:background="@drawable/ic_card_dropbox_gray"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <View
+        android:id="@+id/dropbox_top"
+        android:layout_width="65dp"
+        android:layout_height="85dp"
+        android:background="@drawable/ic_card_dropbox_gray"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3"
+        tools:visibility="visible" />
+
+    <View
+        android:id="@+id/dropbox_right"
+        android:layout_width="65dp"
+        android:layout_height="85dp"
+        android:background="@drawable/ic_card_dropbox_gray"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <com.fuseteam.games.belote.ui.CardView
+        android:id="@+id/trampCard"
+        style="@style/player_card"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
     <!--......................................Player.Cards.......................................-->
 
@@ -194,7 +256,7 @@
     <!--...................................Opponent.right.Cards...................................-->
 
     <com.fuseteam.games.belote.ui.CardView
-        android:id="@+id/opponentRightCard1"
+        android:id="@+id/opponentRightCard8"
         style="@style/opponent_right_card"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -202,45 +264,45 @@
         app:layout_constraintVertical_bias="0.225" />
 
     <com.fuseteam.games.belote.ui.CardView
-        android:id="@+id/opponentRightCard2"
+        android:id="@+id/opponentRightCard7"
         style="@style/opponent_right_card"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/opponentRightCard1" />
-
-    <com.fuseteam.games.belote.ui.CardView
-        android:id="@+id/opponentRightCard3"
-        style="@style/opponent_right_card"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/opponentRightCard2" />
-
-    <com.fuseteam.games.belote.ui.CardView
-        android:id="@+id/opponentRightCard4"
-        style="@style/opponent_right_card"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/opponentRightCard3" />
-
-    <com.fuseteam.games.belote.ui.CardView
-        android:id="@+id/opponentRightCard5"
-        style="@style/opponent_right_card"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/opponentRightCard4" />
+        app:layout_constraintTop_toTopOf="@+id/opponentRightCard8" />
 
     <com.fuseteam.games.belote.ui.CardView
         android:id="@+id/opponentRightCard6"
         style="@style/opponent_right_card"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/opponentRightCard5" />
+        app:layout_constraintTop_toTopOf="@+id/opponentRightCard7" />
 
     <com.fuseteam.games.belote.ui.CardView
-        android:id="@+id/opponentRightCard7"
+        android:id="@+id/opponentRightCard5"
         style="@style/opponent_right_card"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/opponentRightCard6" />
 
     <com.fuseteam.games.belote.ui.CardView
-        android:id="@+id/opponentRightCard8"
+        android:id="@+id/opponentRightCard4"
         style="@style/opponent_right_card"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/opponentRightCard7" />
+        app:layout_constraintTop_toTopOf="@+id/opponentRightCard5" />
+
+    <com.fuseteam.games.belote.ui.CardView
+        android:id="@+id/opponentRightCard3"
+        style="@style/opponent_right_card"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/opponentRightCard4" />
+
+    <com.fuseteam.games.belote.ui.CardView
+        android:id="@+id/opponentRightCard2"
+        style="@style/opponent_right_card"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/opponentRightCard3" />
+
+    <com.fuseteam.games.belote.ui.CardView
+        android:id="@+id/opponentRightCard1"
+        style="@style/opponent_right_card"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/opponentRightCard2" />
 
 </android.support.constraint.ConstraintLayout>

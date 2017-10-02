@@ -46,7 +46,7 @@ class CardSet {
      * @return
      */
     @Synchronized
-    fun pop3(): List<CardData> {
+    fun pop3(): ArrayList<CardData> {
         val list = pop2()
         addIfPossible(pop(), list)
         return list

@@ -6,6 +6,9 @@
     tools:context=".activities.MainActivity"
     android:background="@drawable/bg_table_green">
 
-    <include layout="@layout/content_main" />
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </android.support.design.widget.CoordinatorLayout>

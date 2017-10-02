@@ -34,7 +34,8 @@
     </style>
 
     <style name="opponent_right_card" parent="opponent_left_card">
-        <item name="android:rotation">-90</item>
+        <item name="android:rotation">90</item>
+        <item name="android:scaleX">-1</item>
     </style>
 
 </resources>
