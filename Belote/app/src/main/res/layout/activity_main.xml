@@ -4,9 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.fuseteam.games.belote.com.fuseteam.games.belote.activities.MainActivity"
+    tools:context=".activities.MainActivity"
     android:background="@drawable/bg_table_green">
 
     <include layout="@layout/content_main" />
+
+
+    <Button
+        android:id="@+id/login_with_google"
+        android:layout_width="wrap_content"
+        android:text="Login with Google"
+        android:layout_height="wrap_content"/>
 
 </android.support.design.widget.CoordinatorLayout>
