@@ -69,8 +69,6 @@ public class CardView extends AppCompatImageView {
     private int getImageRes(CardData data) {
         String name = data.component1().getPrefix() + "_" + data.component2().getSofix();
 
-        Log.e("CardView", name);
-
         Context context = getContext();
         Resources res = context.getResources();
         return res.getIdentifier(name, "drawable", context.getPackageName());

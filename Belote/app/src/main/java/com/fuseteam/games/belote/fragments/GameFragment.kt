@@ -40,7 +40,7 @@ class GameFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         var v: ViewGroup = inflater.inflate(
-                R.layout.fragment_main, container, false
+                R.layout.fragment_game, container, false
         ) as ViewGroup
 
         playerCardViewList.clear()
