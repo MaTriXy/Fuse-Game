@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Belote</string>
     <string name="action_settings">Settings</string>
+    <string name="leave">leave que</string>
+    <string name="join">Join to Que</string>
+    <string name="login_with_google">Login with Google</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

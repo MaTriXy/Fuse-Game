@@ -20,18 +20,15 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-/**
- * A placeholder fragment containing a simple view.
- */
 class MainActivityFragment : Fragment(), GoogleApiClient.OnConnectionFailedListener {
 
-    val RC_SIGN_IN: Int = 78
-    lateinit var loginWithGoogleButton: Button
-    lateinit var joinToQue: Button
-    var mGoogleApiClient: GoogleApiClient? = null
-    var currentUserInQue = false
-
-    lateinit var playesQueReference: DatabaseReference
+    private val RC_SIGN_IN: Int = 78
+    private lateinit var loginWithGoogleButton: Button
+    private lateinit var joinToQue: Button
+    private var mGoogleApiClient: GoogleApiClient? = null
+    private var currentUserInQue = false
+    private lateinit var rootView: ViewGroup
+    private lateinit var playesQueReference: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,9 +42,11 @@ class MainActivityFragment : Fragment(), GoogleApiClient.OnConnectionFailedListe
                 .build()
     }
 
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        rootView = inflater.inflate(R.layout.fragment_main, container, false) as ViewGroup
+        return rootView
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
@@ -55,32 +54,38 @@ class MainActivityFragment : Fragment(), GoogleApiClient.OnConnectionFailedListe
         loginWithGoogleButton = view!!.findViewById<Button>(R.id.login_with_google)
         joinToQue = view.findViewById<Button>(R.id.join_to_que)
         var currentUser = FirebaseAuth.getInstance().currentUser
-        if (currentUser != null) {
-            loginWithGoogleButton.visibility = View.GONE
-            joinToQue.visibility = View.VISIBLE
-            Toast.makeText(context, "hello" + currentUser.displayName, Toast.LENGTH_SHORT).show()
-        } else {
-            loginWithGoogleButton.setOnClickListener {
-                signIn()
+        joinToQue.setOnClickListener {
+            when (currentUserInQue) {
+                true -> {
+                    val database = FirebaseDatabase.getInstance()
+                    database.getReference(Player.TABLE + "/" + FirebaseAuth.getInstance().currentUser!!.uid).removeValue()
+                    currentUserInQue = false
+                    joinToQue.text = getString(R.string.join)
+                }
+                else -> {
+                    val database = FirebaseDatabase.getInstance()
+                    var player = Player()
+                    var currentUser1 = FirebaseAuth.getInstance().currentUser
+                    player.id = currentUser1!!.uid
+                    player.email = currentUser1!!.email
+                    database.getReference(Player.TABLE + "/" + currentUser1.uid).setValue(player)
+                    currentUserInQue = true
+                    joinToQue.text = getString(R.string.leave)
+                }
             }
         }
-
-        joinToQue.setOnClickListener {
-            if (!currentUserInQue) {
-                val database = FirebaseDatabase.getInstance()
-                var player = Player()
-                var currentUser1 = FirebaseAuth.getInstance().currentUser
-                player.id = currentUser1!!.uid
-                player.email = currentUser1!!.email
-                database.getReference(Player.TABLE + "/" + currentUser1.uid).setValue(player)
-                currentUserInQue = true
-                joinToQue.text = "leave que"
-            } else {
-                val database = FirebaseDatabase.getInstance()
-                database.getReference(Player.TABLE + "/" + FirebaseAuth.getInstance().currentUser!!.uid).removeValue()
-                currentUserInQue = false
-                joinToQue.text = "Joint to Que"
+        when (currentUser) {
+            null -> {
+                loginWithGoogleButton.setOnClickListener {
+                    signIn()
+                }
             }
+            else -> {
+                loginWithGoogleButton.visibility = View.GONE
+                joinToQue.visibility = View.VISIBLE
+                Toast.makeText(context, "hello" + currentUser.displayName, Toast.LENGTH_SHORT).show()
+            }
+
         }
 
     }

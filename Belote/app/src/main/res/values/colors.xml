@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorGray">#8E8E8E</color>
+    <color name="loading_bg">#16141c</color>
+    <color name="goo_loading_bg">#ee5462</color>
 </resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pl.droidsonroids.gif.GifImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:src="@drawable/goo_loader"
+    android:background="@color/goo_loading_bg"
+    android:layout_gravity="center"/>
+
+    <!--android:background="@color/loading_bg"-->
+    <!--android:src="@drawable/loading" />-->
