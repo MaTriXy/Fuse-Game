@@ -1,22 +1,16 @@
-package com.fuseteam.games.belote.ui;
+package com.elkriefy.games.belote.ui;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.View;
 
-import com.fuseteam.games.belote.R;
-import com.fuseteam.games.belote.model.CardData;
+import com.elkriefy.games.belote.R;
+import com.elkriefy.games.belote.model.CardData;
 
 /**
- * Created by arielyust on 02/10/2017.
+ *
  */
 
 public class CardView extends AppCompatImageView {

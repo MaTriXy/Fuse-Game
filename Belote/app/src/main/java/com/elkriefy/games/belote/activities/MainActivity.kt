@@ -1,10 +1,9 @@
-package com.fuseteam.games.belote.activities
+package com.elkriefy.games.belote.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.fuseteam.games.belote.R
-import com.fuseteam.games.belote.fragments.GameFragment
-import com.fuseteam.games.belote.fragments.MainActivityFragment
+import com.elkriefy.games.belote.R
+import com.elkriefy.games.belote.fragments.GameFragment
 
 class MainActivity : AppCompatActivity() {
 

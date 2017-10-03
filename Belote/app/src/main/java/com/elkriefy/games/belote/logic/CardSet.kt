@@ -1,15 +1,11 @@
-package com.fuseteam.games.belote.logic
+package com.elkriefy.games.belote.logic
 
-import com.fuseteam.games.belote.model.CardData
-import com.fuseteam.games.belote.model.Suit
-import com.fuseteam.games.belote.model.Value
+import com.elkriefy.games.belote.model.CardData
+import com.elkriefy.games.belote.model.Suit
+import com.elkriefy.games.belote.model.Value
 
 import java.util.ArrayList
 import java.util.Collections
-
-/**
- * Created by arielyust on 02/10/2017.
- */
 
 class CardSet {
 

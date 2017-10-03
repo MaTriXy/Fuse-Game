@@ -1,26 +1,24 @@
-package com.fuseteam.games.belote.fragments
+package com.elkriefy.games.belote.fragments
 
 import android.animation.Animator
+import android.animation.AnimatorSet
+import android.animation.ValueAnimator
+import android.content.ClipData
 import android.os.Bundle
 import android.support.annotation.IdRes
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.fuseteam.games.belote.R
-import com.fuseteam.games.belote.logic.CardSet
-import com.fuseteam.games.belote.model.CardData
-import com.fuseteam.games.belote.ui.CardView
-import android.animation.ValueAnimator
-import android.animation.AnimatorSet
-import android.view.ViewTreeObserver.OnGlobalLayoutListener
-import com.fuseteam.games.belote.model.Player
-import com.google.android.gms.tasks.Tasks
-import java.util.*
-import android.view.View.DragShadowBuilder
-import android.content.ClipData
 import android.view.MotionEvent
+import android.view.View
 import android.view.View.OnTouchListener
+import android.view.ViewGroup
+import android.view.ViewTreeObserver.OnGlobalLayoutListener
+import com.elkriefy.games.belote.R
+import com.elkriefy.games.belote.logic.CardSet
+import com.elkriefy.games.belote.model.CardData
+import com.elkriefy.games.belote.model.Player
+import com.elkriefy.games.belote.ui.CardView
+import java.util.*
 
 
 /**

@@ -59,7 +59,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/trampCard"
         style="@style/player_card"
         android:visibility="gone"
@@ -71,7 +71,7 @@
 
     <!--......................................Player.Cards.......................................-->
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/playerCard1"
         style="@style/player_card"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -79,7 +79,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/playerCard2" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/playerCard2"
         style="@style/player_card"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -87,7 +87,7 @@
         app:layout_constraintLeft_toRightOf="@+id/playerCard1"
         app:layout_constraintRight_toLeftOf="@+id/playerCard3" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/playerCard3"
         style="@style/player_card"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -95,7 +95,7 @@
         app:layout_constraintLeft_toRightOf="@+id/playerCard2"
         app:layout_constraintRight_toLeftOf="@+id/playerCard4" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/playerCard4"
         style="@style/player_card"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -103,7 +103,7 @@
         app:layout_constraintLeft_toRightOf="@+id/playerCard3"
         app:layout_constraintRight_toLeftOf="@+id/playerCard5" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/playerCard5"
         style="@style/player_card"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -111,7 +111,7 @@
         app:layout_constraintLeft_toRightOf="@+id/playerCard4"
         app:layout_constraintRight_toLeftOf="@+id/playerCard6" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/playerCard6"
         style="@style/player_card"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -119,7 +119,7 @@
         app:layout_constraintLeft_toRightOf="@+id/playerCard5"
         app:layout_constraintRight_toLeftOf="@+id/playerCard7" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/playerCard7"
         style="@style/player_card"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -127,7 +127,7 @@
         app:layout_constraintLeft_toRightOf="@+id/playerCard6"
         app:layout_constraintRight_toLeftOf="@+id/playerCard8" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/playerCard8"
         style="@style/player_card"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -137,7 +137,7 @@
 
     <!--...................................Opponent.left.Cards...................................-->
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/opponentLeftCard1"
         style="@style/opponent_left_card"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -145,43 +145,43 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.225" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/opponentLeftCard2"
         style="@style/opponent_left_card"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="@+id/opponentLeftCard1" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/opponentLeftCard3"
         style="@style/opponent_left_card"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="@+id/opponentLeftCard2" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/opponentLeftCard4"
         style="@style/opponent_left_card"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="@+id/opponentLeftCard3" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/opponentLeftCard5"
         style="@style/opponent_left_card"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="@+id/opponentLeftCard4" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/opponentLeftCard6"
         style="@style/opponent_left_card"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="@+id/opponentLeftCard5" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/opponentLeftCard7"
         style="@style/opponent_left_card"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="@+id/opponentLeftCard6" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/opponentLeftCard8"
         style="@style/opponent_left_card"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -189,7 +189,7 @@
 
     <!--...................................Opponent.top.Cards....................................-->
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/opponentTopCard1"
         style="@style/opponent_top_card"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -197,7 +197,7 @@
         app:layout_constraintRight_toLeftOf="@+id/opponentTopCard2"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/opponentTopCard2"
         style="@style/opponent_top_card"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -205,7 +205,7 @@
         app:layout_constraintRight_toLeftOf="@+id/opponentTopCard3"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/opponentTopCard3"
         style="@style/opponent_top_card"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -213,7 +213,7 @@
         app:layout_constraintRight_toLeftOf="@+id/opponentTopCard4"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/opponentTopCard4"
         style="@style/opponent_top_card"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -221,7 +221,7 @@
         app:layout_constraintRight_toLeftOf="@+id/opponentTopCard5"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/opponentTopCard5"
         style="@style/opponent_top_card"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -229,7 +229,7 @@
         app:layout_constraintRight_toLeftOf="@+id/opponentTopCard6"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/opponentTopCard6"
         style="@style/opponent_top_card"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -237,7 +237,7 @@
         app:layout_constraintRight_toLeftOf="@+id/opponentTopCard7"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/opponentTopCard7"
         style="@style/opponent_top_card"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -245,7 +245,7 @@
         app:layout_constraintRight_toLeftOf="@+id/opponentTopCard8"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/opponentTopCard8"
         style="@style/opponent_top_card"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -255,7 +255,7 @@
 
     <!--...................................Opponent.right.Cards...................................-->
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/opponentRightCard8"
         style="@style/opponent_right_card"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -263,43 +263,43 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.225" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/opponentRightCard7"
         style="@style/opponent_right_card"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/opponentRightCard8" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/opponentRightCard6"
         style="@style/opponent_right_card"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/opponentRightCard7" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/opponentRightCard5"
         style="@style/opponent_right_card"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/opponentRightCard6" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/opponentRightCard4"
         style="@style/opponent_right_card"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/opponentRightCard5" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/opponentRightCard3"
         style="@style/opponent_right_card"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/opponentRightCard4" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/opponentRightCard2"
         style="@style/opponent_right_card"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/opponentRightCard3" />
 
-    <com.fuseteam.games.belote.ui.CardView
+    <com.elkriefy.games.belote.ui.CardView
         android:id="@+id/opponentRightCard1"
         style="@style/opponent_right_card"
         app:layout_constraintRight_toRightOf="parent"

@@ -1,4 +1,4 @@
-package com.fuseteam.games.belote.data.types
+package com.elkriefy.games.belote.data.types
 
 class Game {
     var id: String? = null
