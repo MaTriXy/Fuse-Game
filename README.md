@@ -17,6 +17,11 @@ possibly yielding the game's name itself.
 Come and join the game and Enjoy Hours of fun.
 
 
+
+## Used libraries
+
+- koral-- [android-gif-drawable](https://github.com/koral--/android-gif-drawable)
+
 License
 -------
 
